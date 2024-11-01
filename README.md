@@ -12,13 +12,15 @@ Siga os passos abaixo para instalar o projeto em seu ambiente local:
 # 2. Acesse o diretório do projeto
 
 Navegue até o diretório do projeto que você acabou de clonar:
-cd seu-repositorio
+
+cd teste-back-end-catalogo-produtos
 
 # 3. Instale as dependências
 
 Certifique-se de ter o Composer instalado em sua máquina. Em seguida, execute o comando abaixo para instalar todas as dependências do projeto:
 
 composer install
+
 npm install
 
 # 4. Configure o ambiente
