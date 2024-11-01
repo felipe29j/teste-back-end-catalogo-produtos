@@ -37,10 +37,15 @@ rename .env.example .env
 Abra o arquivo .env em um editor de texto e configure as variáveis de ambiente de acordo com seu ambiente de desenvolvimento
 
 DB_CONNECTION=mysql
+
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
+
 DB_DATABASE=nome_do_seu_banco_de_dados
+
 DB_USERNAME=seu_usuario
+
 DB_PASSWORD=sua_senha
 
 Nota: Certifique-se de criar o banco de dados especificado no seu servidor de banco de dados antes de prosseguir.
