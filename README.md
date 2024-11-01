@@ -25,6 +25,10 @@ composer install
 
 npm install
 
+npm run dev
+
+e abra um novo terminal
+
 # 4. Configure o ambiente
 
 Renomeie o arquivo .env.example para .env. Este arquivo contém as variáveis de ambiente necessárias para o projeto. Você pode fazer isso com o seguinte comando:
