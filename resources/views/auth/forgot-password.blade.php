@@ -3,13 +3,11 @@
         {{ __('Esqueceu sua senha? Não tem problema. Basta informar seu endereço de e-mail e enviaremos um link de redefinição de senha para que você possa escolher uma nova.') }}
     </div>
 
-    <!-- Status da Sessão -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
 
-        <!-- Endereço de Email -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
