@@ -6,8 +6,7 @@ Siga os passos abaixo para instalar o projeto em seu ambiente local:
 
    Primeiro, você precisa clonar o repositório para sua máquina local. Abra um terminal e execute o seguinte comando:
 
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   Substitua seu-usuario e seu-repositorio pelo seu nome de usuário do GitHub e o nome do repositório.
+   git clone https://github.com/felipe29j/teste-back-end-catalogo-produtos.git
 
 
 # 2. Acesse o diretório do projeto
