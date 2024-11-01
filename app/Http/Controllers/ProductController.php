@@ -102,11 +102,9 @@ class ProductController extends Controller
         $productId = $request->input('product_id');
     
         $command = $productId ? 'products:import --id=' . $productId : 'products:import';
-        
-        Artisan::call($command);
-        $output = Artisan::output(); // Captura a saída do comando
 
-        // Verifica se houve erros durante a importação
+        Artisan::call($command);
+
         if ($output) {
             return redirect()->route('products.index')->with('status', 'Produto importado com sucesso');
         } else {
