@@ -105,7 +105,7 @@ class ProductController extends Controller
         
         Artisan::call($command);
         $output = Artisan::output(); // Captura a saída do comando
-    
+
         // Verifica se houve erros durante a importação
         if ($output) {
             return redirect()->route('products.index')->with('status', 'Produto importado com sucesso');

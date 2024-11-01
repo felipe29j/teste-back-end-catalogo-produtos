@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 
 class ImportProducts extends Command
 {
-    protected $signature = 'products:import';
+    protected $signature = 'products:import {--id= : ID do produto a ser importado}';
     protected $description = 'Importar produtos da API externa';
 
     public function handle()
@@ -19,9 +19,15 @@ class ImportProducts extends Command
         $url = 'https://fakestoreapi.com/products';
 
         try {
-            $response = $client->get($url, ['verify' => false]);
+            $productId = $this->option('id');
 
-            $productsData = json_decode($response->getBody()->getContents(), true);
+            if ($productId) {
+                $response = $client->get($url . '/' . $productId, ['verify' => false]);
+                $productsData = [json_decode($response->getBody()->getContents(), true)];
+            } else {
+                $response = $client->get($url, ['verify' => false]);
+                $productsData = json_decode($response->getBody()->getContents(), true);
+            }
 
             foreach ($productsData as $productData) {
                 $category = Category::firstOrCreate(
