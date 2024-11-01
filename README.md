@@ -2,7 +2,7 @@
 
 Siga os passos abaixo para instalar o projeto em seu ambiente local:
 
-1. **Clone o repositório:**
+# 1. Clone o repositório
 
    Primeiro, você precisa clonar o repositório para sua máquina local. Abra um terminal e execute o seguinte comando:
 
@@ -10,19 +10,19 @@ Siga os passos abaixo para instalar o projeto em seu ambiente local:
    Substitua seu-usuario e seu-repositorio pelo seu nome de usuário do GitHub e o nome do repositório.
 
 
-2. **Acesse o diretório do projeto:**
+# 2. Acesse o diretório do projeto
 
 Navegue até o diretório do projeto que você acabou de clonar:
 cd seu-repositorio
 
-3. **Instale as dependências:**
+# 3. Instale as dependências
 
 Certifique-se de ter o Composer instalado em sua máquina. Em seguida, execute o comando abaixo para instalar todas as dependências do projeto:
 
 composer install
 npm install
 
-4. **Configure o ambiente:**
+# 4. Configure o ambiente
 
 Renomeie o arquivo .env.example para .env. Este arquivo contém as variáveis de ambiente necessárias para o projeto. Você pode fazer isso com o seguinte comando:
 
@@ -32,7 +32,7 @@ Ou, se você estiver em um sistema Windows, use:
 
 rename .env.example .env
 
-5. **Edite o arquivo .env:**
+# 5. Edite o arquivo .env
 
 Abra o arquivo .env em um editor de texto e configure as variáveis de ambiente de acordo com seu ambiente de desenvolvimento
 
@@ -45,18 +45,18 @@ DB_PASSWORD=sua_senha
 
 Nota: Certifique-se de criar o banco de dados especificado no seu servidor de banco de dados antes de prosseguir.
 
-5. **Gere a chave da aplicação:**
+# 6. Gere a chave da aplicação
 
 Execute o comando abaixo para gerar a chave da aplicação. Esta chave é necessária para a criptografia de dados e para a segurança da aplicação:
 
 php artisan key:generate
 
-6. **Execute as migrações do banco de dados:**
+# 7. Execute as migrações do banco de dados
 
 Para criar as tabelas necessárias no banco de dados, execute o comando:
 php artisan migrate --seed
 
-7. **Inicie o servidor de desenvolvimento:**
+# 8. Inicie o servidor de desenvolvimento
 
 Para iniciar o servidor local, execute o seguinte comando:
 php artisan serve
