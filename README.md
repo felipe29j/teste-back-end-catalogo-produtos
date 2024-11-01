@@ -15,6 +15,8 @@ Navegue até o diretório do projeto que você acabou de clonar:
 
 cd teste-back-end-catalogo-produtos
 
+agora abra o terminal.
+
 # 3. Instale as dependências
 
 Certifique-se de ter o Composer instalado em sua máquina. Em seguida, execute o comando abaixo para instalar todas as dependências do projeto:
