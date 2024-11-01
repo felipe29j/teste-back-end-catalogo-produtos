@@ -9,22 +9,38 @@ use Illuminate\Support\Facades\Artisan;
 class ProductController extends Controller
 {
     public function index(Request $request)
-    {
-        $query = Product::query();
+{
+    $query = Product::query();
 
-        if ($request->has('name')) {
-            $query->where('name', 'like', '%' . $request->name . '%');
-        }
-
-        if ($request->has('category')) {
-            $query->whereHas('category', function ($q) use ($request) {
-                $q->where('name', 'like', '%' . $request->category . '%');
-            });
-        }
-
-        $products = $query->get();
-        return view('products.index', compact('products'));
+    // Busca por nome
+    if ($request->has('name') && $request->name != '') {
+        $query->where('name', 'like', '%' . $request->name . '%');
     }
+
+    // Busca por categoria
+    if ($request->has('category') && $request->category != '') {
+        $query->whereHas('category', function ($q) use ($request) {
+            $q->where('name', 'like', '%' . $request->category . '%');
+        });
+    }
+
+    // Busca por ID
+    if ($request->has('id') && $request->id != '') {
+        $query->where('id', $request->id);
+    }
+
+    // Filtro para produtos com ou sem imagem
+    if ($request->has('has_image')) {
+        if ($request->has_image == '1') {
+            $query->whereNotNull('image_url'); // Produtos com imagem
+        } elseif ($request->has_image == '0') {
+            $query->whereNull('image_url'); // Produtos sem imagem
+        }
+    }
+
+    $products = $query->get();
+    return view('products.index', compact('products'));
+}
 
     public function create()
     {
@@ -35,17 +51,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|unique:products,name', 
             'price' => 'required|numeric',
             'description' => 'required',
             'category_id' => 'required|exists:categories,id',
             'image_url' => 'nullable|url',
+        ], [
+            'name.unique' => 'O nome do produto já está em uso. Por favor, escolha outro nome.',
         ]);
-
+    
         Product::create($request->all());
-
-        return redirect()->route('products.index');
+    
+        return redirect()->route('products.index')->with('status', 'Produto criado com sucesso!');
     }
+    
 
     public function edit(Product $product)
     {
@@ -56,7 +75,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|unique:products,name,' . $product->id, 
             'price' => 'required|numeric',
             'description' => 'required',
             'category_id' => 'required|exists:categories,id',
@@ -67,7 +86,6 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
     }
-
     public function destroy(Product $product)
     {
         $product->delete();

@@ -7,18 +7,43 @@
 <a href="{{ route('products.import') }}" class="btn btn-success">Importar Produtos da API</a>
 <br>
 
+<!-- Formulário de busca -->
+<form action="{{ route('products.index') }}" method="GET" class="mt-3 mb-3">
+    <div class="row align-items-end">
+        <div class="col-md-2">
+            <input type="text" name="id" class="form-control" placeholder="Buscar por ID" value="{{ request('id') }}">
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="name" class="form-control" placeholder="Buscar por Nome" value="{{ request('name') }}">
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="category" class="form-control" placeholder="Buscar por Categoria" value="{{ request('category') }}">
+        </div>
+        <div class="col-md-2">
+            <select name="has_image" class="form-control">
+                <option value="">Selecionar Imagem</option>
+                <option value="1" {{ request('has_image') == '1' ? 'selected' : '' }}>Com Imagem</option>
+                <option value="0" {{ request('has_image') == '0' ? 'selected' : '' }}>Sem Imagem</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
+    </div>
+</form>
+
 <style>
     .alert.alert-success {
         margin-top: 10px;
     }
     .product-image {
-        max-width: 100px; /* Limita a largura da imagem */
-        max-height: 100px; /* Limita a altura da imagem */
+        max-width: 100px;
+        max-height: 100px;
     }
     .placeholder-image {
         width: 100px;
         height: 100px;
-        background-color: #f0f0f0; /* Cor de fundo para a imagem de placeholder */
+        background-color: #f0f0f0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -27,8 +52,9 @@
         border: 1px solid #ccc;
     }
     .action-button {
-        display: block; /* Exibe cada botão em uma nova linha */
-        margin-top: 5px; /* Adiciona um pequeno espaço entre os botões */
+        display: block;
+        margin-top: 5px;
+        width: 100%; /* Botões cobrem todo o espaço disponível */
     }
 </style>
 
