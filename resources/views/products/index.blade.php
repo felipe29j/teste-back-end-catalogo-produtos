@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Lista de Produtos</h1>
+<h1>Catálogo de Produtos</h1>
 
 <a href="{{ route('products.create') }}" class="btn btn-primary">Criar Novo Produto</a>
 <a href="{{ route('products.import') }}" class="btn btn-success">Importar Produtos da API</a>
