@@ -59,10 +59,13 @@ php artisan key:generate
 # 7. Execute as migrações do banco de dados
 
 Para criar as tabelas necessárias no banco de dados, execute o comando:
+
 php artisan migrate --seed
 
 # 8. Inicie o servidor de desenvolvimento
 
 Para iniciar o servidor local, execute o seguinte comando:
+
 php artisan serve
+
 O servidor estará disponível em http://localhost:8000.
